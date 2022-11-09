@@ -3,10 +3,10 @@ const video = document.getElementById('video');
 let mood;
 
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('/tree/main/src/ML/models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('/tree/main/src/ML/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('/tree/main/src/ML/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('/tree/main/src/ML/models')
+    faceapi.nets.tinyFaceDetector.loadFromUri('https://github.com/Mayur0307/Moosically/tree/main/src/ML/models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('https://github.com/Mayur0307/Moosically/tree/main/src/ML/models'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('https://github.com/Mayur0307/Moosically/tree/main/src/ML/models'),
+    faceapi.nets.faceExpressionNet.loadFromUri('https://github.com/Mayur0307/Moosically/tree/main/src/ML/models')
 
 ]).then(startVideo);
 console.log("hello1");
