@@ -3,10 +3,10 @@ const video = document.getElementById('video');
 let mood;
 
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('https://mayur0307.github.io/Moosically/src/ML/models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('https://mayur0307.github.io/Moosically/src/ML/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('https://mayur0307.github.io/Moosically/src/ML/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('https://mayur0307.github.io/Moosically/src/ML/models')
+    faceapi.nets.tinyFaceDetector.loadFromUri('https:mayur0307.github.io/Moosically/src/ML/models/tiny_face_detector_model-weights_manifest.json'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('https:mayur0307.github.io/Moosically/src/ML/models/face_landmark_68_model-weights_manifest.json'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('https:mayur0307.github.io/Moosically/src/ML/models/face_recognition_model-weights_manifest.json'),
+    faceapi.nets.faceExpressionNet.loadFromUri('https://mayur0307.github.io/Moosically/src/ML/models/face_expression_model-weights_manifest.json')
 
 ]).then(startVideo);
 console.log("hello1");
