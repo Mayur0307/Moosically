@@ -3,17 +3,11 @@ const video = document.getElementById('video');
 let mood;
 
 Promise.all([
-<<<<<<< HEAD
     faceapi.nets.tinyFaceDetector.loadFromUri('../../storage/models'),
     faceapi.nets.faceLandmark68Net.loadFromUri('../../storage/models'),
     faceapi.nets.faceRecognitionNet.loadFromUri('../../storage/models'),
     faceapi.nets.faceExpressionNet.loadFromUri('../../storage/models')
-=======
-    faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('/models')
->>>>>>> e43c90192f5072cde98ae9a65512ccb5f22b630a
+
 ]).then(startVideo);
 console.log("hello1");
 
