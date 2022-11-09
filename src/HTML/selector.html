@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moosicaly-Detection</title>
+    <link rel="icon" href="../../assets/imgs/logoBlack.png">
+    <link rel="stylesheet" href="../CSS/selector.css">
+</head>
+
+<body>
+    <div id="selector">
+        <div>
+            <div class="inputoutput">
+                <div class="caption">Video Input:</div>
+                <video id="videoInput" autoplay></video>
+            </div>
+            <div class="inputoutput">
+                <div class="caption">Canvas Output:</div>
+                <canvas id="canvasOutput"></canvas><br><br>
+                <div >Mood Detected: <span id="moodOut"></span></div><br>
+            </div>
+        </div>
+
+        <button id="captureButton">Capture</button>
+        <a href="../HTML/Player.html"><button id="Player-btn">Player</button></a>
+    </div>
+    <script type="text/javascript" src="../src/JS/opencv.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        let video = document.getElementById("videoInput");
+        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+            .then(function (stream) {
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function (err) {
+                console.log("An error occurred! " + err);
+            });
+        //capture button
+        let captureButton = document.getElementById("captureButton");
+        captureButton.addEventListener("click", function () {
+            let canvas = document.getElementById("canvasOutput");
+            let context = canvas.getContext("2d");
+            // draw image to 100x100
+            context.drawImage(video, 0, 0, 150, 150);
+            document.getElementById('moodOut').innerHTML = "Happy";
+        });
+
+        var TOKEN = "48dd53ad1bf14e16afd24b29117f3e57"
+
+        // This method is going to be used to send all the requests
+        function make_request(method, url, data, callback) {
+            $.ajax({
+                async: true,
+                crossDomain: true,
+                url: url,
+                method: method,
+                headers: {
+                    token: TOKEN
+                },
+                data: data
+            }).done(function (response) {
+                callback(response)
+            });
+        }
+
+        make_request("POST", "https://api.luxand.cloud/photo/emotions", { "photo": "https://dashboard.luxand.cloud/img/angelina-and-brad.jpg" }, function (response) {
+            console.log(response)
+        })
+    </script>
+
