@@ -10,6 +10,14 @@ Promise.all([
 
 ]).then(startVideo);
 console.log("hello1");
+Promise.all([
+    faceapi.nets.tinyFaceDetector.loadFromUri('https://Moosically.vercel.app/src/ML/models/tiny_face_detector_model-weights_manifest.json'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('https://Moosically.vercel.app/src/ML/models/face_landmark_68_model-weights_manifest.json'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('https://Moosically.vercel.app/src/ML/models/face_recognition_model-weights_manifest.json'),
+    faceapi.nets.faceExpressionNet.loadFromUri('https://Moosically.vercel.app/src/ML/models/face_expression_model-weights_manifest.json')
+
+]).then(startVideo);
+console.log("hello1");
 
 let expression;
 
