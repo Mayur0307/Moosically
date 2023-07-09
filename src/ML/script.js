@@ -10,19 +10,9 @@ Promise.all([
 
 ]).then(startVideo);
 console.log("hello1");
-Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('https://Moosically.vercel.app/src/ML/models/tiny_face_detector_model-weights_manifest.json'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('https://Moosically.vercel.app/src/ML/models/face_landmark_68_model-weights_manifest.json'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('https://Moosically.vercel.app/src/ML/models/face_recognition_model-weights_manifest.json'),
-    faceapi.nets.faceExpressionNet.loadFromUri('https://Moosically.vercel.app/src/ML/models/face_expression_model-weights_manifest.json')
-
-]).then(startVideo);
-console.log("hello1");
 
 let expression;
 
-// mood = stopVideo();
-// console.log(mood);
 function startVideo() {
     navigator.getUserMedia(
         { video: {} },
@@ -40,16 +30,8 @@ video.addEventListener('play', () => {
         const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-        // faceapi.draw.drawDetections(canvas, resizedDetections)
-        // faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
-        // faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
         expression = resizedDetections[0].expressions
-        // write expressions as json to file named exp asynchronously
-        // writeFile('exp', JSON.stringify(expression), (err) => {
-        //   if (err)
-        //     throw err
-        //   }
-        // )
+     
     }, 1000)
 })
 
@@ -127,7 +109,7 @@ document.getElementById("toPlayer").addEventListener("click", function () {
             const shuffled1 = array.sort(() => 0.5 - Math.random());
 
             songs = shuffled1.slice(0, 6);
-            mood='happy';
+            mood = 'happy';
             break;
 
         case 'neutral':
@@ -137,7 +119,7 @@ document.getElementById("toPlayer").addEventListener("click", function () {
                 { songName: "Call Out My Name - The Weeknd", filePath: "../../assets/songs/s3.mp3", cover: "../../assets/covers/s3.jpg" },
                 { songName: "Doing It Wrong - Drake", filePath: "../../assets/songs/s4.mp3", cover: "../../assets/covers/s4.jpg" },
                 { songName: "Traitor - Olivia Rodrigo", filePath: "../../assets/songs/s5.mp3", cover: "../../assets/covers/s5.jpg" },
-                {songName: "I Gotta Feeling - the Blacked Eyed Peas", filePath: "../../assets/songs/h5.mp3", cover: "../../assets/covers/h5.jpg" },
+                { songName: "I Gotta Feeling - the Blacked Eyed Peas", filePath: "../../assets/songs/h5.mp3", cover: "../../assets/covers/h5.jpg" },
                 { songName: "Shatter Me - Lindsey Stirling", filePath: "../../assets/songs/a5.mp3", cover: "../../assets/covers/m5.jpg" },
                 { songName: "Bad Guy - Billie Elish", filePath: "../../assets/songs/a5.mp3", cover: "../../assets/covers/a5.jpg" }
             ];

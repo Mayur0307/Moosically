@@ -25,16 +25,14 @@ var array = [
 ];
 const shuffled1 = array.sort(() => 0.5 - Math.random());
 
-           let songs = shuffled1.slice(0, 6);
+let songs = shuffled1.slice(0, 6);
 
 
 songItems.forEach((element, i) => {
     element.getElementsByTagName("img")[0].src = songs[i].cover;
     element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
 })
-//audioElement.play();
 
-//Handle play/pause click
 masterPlay.addEventListener('click', () => {
     if (audioElement.paused || audioElement.currentTime <= 0) {
         songItemPlayFn(songIndex);
