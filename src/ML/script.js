@@ -11,6 +11,14 @@ Promise.all([
 ]).then(startVideo);
 console.log("hello1");
 
+Promise.all([
+    faceapi.nets.tinyFaceDetector.loadFromUri('https://moosically.vercel.app/src/ML/models/tiny_face_detector_model-weights_manifest.json'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('https://moosically.vercel.app/src/ML/models/face_landmark_68_model-weights_manifest.json'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('https://moosically.vercel.app/src/ML/models/face_recognition_model-weights_manifest.json'),
+    faceapi.nets.faceExpressionNet.loadFromUri('https://moosically.vercel.app/src/ML/models/face_expression_model-weights_manifest.json')
+
+]).then(startVideo);
+console.log("hello1");
 let expression;
 
 function startVideo() {
@@ -31,7 +39,7 @@ video.addEventListener('play', () => {
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
         expression = resizedDetections[0].expressions
-     
+
     }, 1000)
 })
 
